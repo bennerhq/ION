@@ -1,0 +1,26 @@
+void main()
+    int[] arr = new int[5]
+    arr[0] = 5
+    arr[1] = 1
+    arr[2] = 4
+    arr[3] = 2
+    arr[4] = 3
+    int n = 5
+    int i = 0
+    while i < n
+        int min = i
+        int j = i + 1
+        while j < n
+            if arr[j] < arr[min]
+                min = j
+            j = j + 1
+        if min != i
+            int tmp = arr[i]
+            arr[i] = arr[min]
+            arr[min] = tmp
+        i = i + 1
+    i = 0
+    while i < n
+        print("%i ", arr[i])
+        i = i + 1
+    print("\n")

@@ -1,0 +1,5 @@
+import "../modules/dup_a"
+import "../modules/dup_b"
+
+void main()
+    print(1)

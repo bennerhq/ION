@@ -1,0 +1,28 @@
+# Compiled object files
+*.o
+*.wasm
+*.wat
+*.exe
+ionc
+
+# Build directory
+build/
+
+# Editor and OS files
+.DS_Store
+*.swp
+*.swo
+
+# Test outputs
+./testing/stdout/
+./testing/stdin/
+
+# IonC intermediate files
+*.wat
+*.wasm
+
+# Logs
+*.log
+
+# Backup files
+*~

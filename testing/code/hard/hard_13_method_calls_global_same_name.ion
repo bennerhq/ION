@@ -1,0 +1,10 @@
+int calc(int x)
+    return x + 1
+
+sample:
+    int calc(int x)
+        return calc(x) + 1
+
+void main()
+    sample s = new sample
+    print(s.calc(3))

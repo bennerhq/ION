@@ -1,0 +1,17 @@
+stats:
+    int sum
+    int sumsq
+
+void add(stats s, int v)
+    s.sum = s.sum + v
+    s.sumsq = s.sumsq + v * v
+
+void main()
+    stats s = new stats
+    s.sum = 0
+    s.sumsq = 0
+    int i = 1
+    while i <= 50000
+        add(s, i)
+        i = i + 1
+    print("%i %i\n", s.sum, s.sumsq)

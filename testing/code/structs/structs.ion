@@ -1,0 +1,28 @@
+vector2:
+    real x
+    real y
+
+    real magnitude()
+        return sqrt(x * x + y * y)
+
+player:
+    string username
+    int score
+    vector2 position
+
+    void level_up()
+        score = score + 100
+
+int main()
+    player p = new player
+    p.username = "Hero"
+    p.position.x = 10.0
+    p.position.y = 5.0
+
+    if p.position.magnitude() > 10.0
+        p.level_up()
+        print("leveled")
+    else
+        print("idle")
+
+    return 0

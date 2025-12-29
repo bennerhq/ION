@@ -1,0 +1,4 @@
+import "../std/io"
+
+void main()
+    io.print_line("hi")

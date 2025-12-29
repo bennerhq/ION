@@ -1,0 +1,11 @@
+void main()
+    int[] arr = new int[5]
+    int i = 0
+    int sum = 0
+    while i < arr.length()
+        sum = sum + i
+        if i % 2 == 0
+            i = i + 2
+        else
+            i = i + 1
+    print(sum)

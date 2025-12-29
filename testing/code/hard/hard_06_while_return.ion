@@ -1,0 +1,14 @@
+int first_gt(int[] arr, int limit)
+    int i = 0
+    while i < arr.length()
+        if arr[i] > limit
+            return arr[i]
+        i = i + 1
+    return -1
+
+void main()
+    int[] arr = new int[3]
+    arr[0] = 1
+    arr[1] = 5
+    arr[2] = 2
+    print(first_gt(arr, 3))

@@ -1,0 +1,12 @@
+box:
+    int v
+
+    int inc()
+        return v + 1
+
+void main()
+    box[] arr = new box[1]
+    arr[0] = new box
+    arr[0].v = 4
+    arr[0].v = arr[0].inc()
+    print(arr[0].v)

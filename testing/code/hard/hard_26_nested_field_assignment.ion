@@ -1,0 +1,12 @@
+inner:
+    int v
+
+outer:
+    inner a
+    inner b
+
+void main()
+    outer o = new outer
+    o.a.v = 3
+    o.b.v = o.a.v + 2
+    print(o.b.v)

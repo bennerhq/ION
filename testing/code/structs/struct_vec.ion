@@ -1,0 +1,12 @@
+vector2:
+    real x
+    real y
+
+    real magnitude()
+        return sqrt(x * x + y * y)
+
+void main()
+    vector2 v = new vector2
+    v.x = 3.0
+    v.y = 4.0
+    print("%r\n", v.magnitude())

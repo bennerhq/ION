@@ -1,0 +1,4 @@
+import "../modules/cycle_b" as cb
+
+int a()
+    return cb.b() + 1

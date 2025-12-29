@@ -1,0 +1,18 @@
+vec2:
+    int x
+    int y
+
+player:
+    vec2 pos
+
+    void move(int dx, int dy)
+        pos.x = pos.x + dx
+        pos.y = pos.y + dy
+
+void main()
+    player p = new player
+    p.pos.x = 1
+    p.pos.y = 2
+    p.move(3, 4)
+    print(p.pos.x)
+    print(p.pos.y)

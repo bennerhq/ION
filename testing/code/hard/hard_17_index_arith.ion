@@ -1,0 +1,5 @@
+void main()
+    int[] arr = new int[5]
+    arr[3] = 11
+    int i = 1
+    print(arr[(i * 2 + 1)])

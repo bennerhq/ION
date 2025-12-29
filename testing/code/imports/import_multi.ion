@@ -1,0 +1,6 @@
+import "../modules/math" as m
+import "../modules/chain"
+
+void main()
+    print(m.square(5))
+    print(chain.add2(8))

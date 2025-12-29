@@ -1,0 +1,4 @@
+import "../modules/cycle_a" as ca
+
+int b()
+    return 1

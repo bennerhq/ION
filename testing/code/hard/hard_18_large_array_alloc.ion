@@ -1,0 +1,3 @@
+void main()
+    int[] big = new int[10000]
+    print(big.length())

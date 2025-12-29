@@ -1,0 +1,6 @@
+import "../modules/over_a" as a
+import "../modules/over_b" as b
+
+void main()
+    print(a.id(1))
+    print(b.id(1))

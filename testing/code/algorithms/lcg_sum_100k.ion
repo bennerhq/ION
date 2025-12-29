@@ -1,0 +1,16 @@
+lcg:
+    int state
+
+void step(lcg g)
+    g.state = (g.state * 22695477 + 1) % 1000003
+
+void main()
+    lcg g = new lcg
+    g.state = 1
+    int i = 0
+    int sum = 0
+    while i < 100000
+        step(g)
+        sum = (sum + g.state) % 1000000007
+        i = i + 1
+    print("%i\n", sum)

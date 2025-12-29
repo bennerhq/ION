@@ -1,0 +1,4 @@
+void main()
+    real x = 12.3456
+    print("%r{2} %e{3}\n", x, x)
+    print("%r{4} %e\n", 0.001234, 0.001234)

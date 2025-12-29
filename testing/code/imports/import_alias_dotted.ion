@@ -1,0 +1,4 @@
+import "../std/io" as fido
+
+void main()
+    fido.print_line("alias")

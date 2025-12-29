@@ -1,0 +1,3 @@
+void main()
+    string fmt = "x=%i y=%s\n"
+    print(fmt, 3, "hi")

@@ -1,0 +1,21 @@
+vehicle:
+    int speed
+
+    void move()
+        print("Vehicle moving")
+
+car extends vehicle:
+    int gears
+
+    void move()
+        print("Car driving fast")
+
+void test_inheritance()
+    car c = new car
+    c.move()
+
+    vehicle v = c
+    v.move()
+
+void main()
+    test_inheritance()

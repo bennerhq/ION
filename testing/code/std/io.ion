@@ -1,0 +1,2 @@
+void print_line(string msg)
+    print(msg)

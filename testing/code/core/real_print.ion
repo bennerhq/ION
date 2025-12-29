@@ -1,0 +1,5 @@
+void main()
+    real a = 3.25
+    real b = -2.0
+    print("%r\n", a)
+    print("%r\n", b)

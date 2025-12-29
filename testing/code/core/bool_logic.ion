@@ -1,0 +1,5 @@
+void main()
+    bool a = true
+    bool b = false
+    print("%b %b %b\n", a and b, a or b, !b)
+    print("%b\n", (a and b) or (!a and !b))

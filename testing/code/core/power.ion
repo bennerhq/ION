@@ -1,0 +1,8 @@
+int powi(int base, int exp)
+    if exp == 0
+        return 1
+    return base * powi(base, exp - 1)
+
+void main()
+    print("%i\n", powi(2, 10))
+    print("%i\n", powi(3, 5))

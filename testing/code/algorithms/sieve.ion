@@ -1,0 +1,26 @@
+void main()
+    int limit = 30
+    bool[] is_prime = new bool[31]
+    int i = 0
+    while i <= limit
+        is_prime[i] = true
+        i = i + 1
+
+    is_prime[0] = false
+    is_prime[1] = false
+
+    int p = 2
+    while p * p <= limit
+        if is_prime[p]
+            int m = p * p
+            while m <= limit
+                is_prime[m] = false
+                m = m + p
+        p = p + 1
+
+    i = 2
+    while i <= limit
+        if is_prime[i]
+            print("%i ", i)
+        i = i + 1
+    print("\n")

@@ -1,0 +1,4 @@
+import "../modules/mutual_even" as even
+
+void main()
+    print(even.is_even(4))

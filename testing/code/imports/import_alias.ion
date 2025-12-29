@@ -1,0 +1,4 @@
+import "../modules/math" as m
+
+void main()
+    print(m.mul(3, 4))

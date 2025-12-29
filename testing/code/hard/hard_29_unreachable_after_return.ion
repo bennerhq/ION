@@ -1,0 +1,6 @@
+int f()
+    return 3
+    int x = 4
+
+void main()
+    print(f())

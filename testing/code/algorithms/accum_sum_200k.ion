@@ -1,0 +1,17 @@
+accum:
+    int value
+
+void add(accum a, int v)
+    a.value = a.value + v
+
+int get(accum a)
+    return a.value
+
+void main()
+    accum a = new accum
+    a.value = 0
+    int i = 1
+    while i <= 200000
+        add(a, i)
+        i = i + 1
+    print("%i\n", get(a))

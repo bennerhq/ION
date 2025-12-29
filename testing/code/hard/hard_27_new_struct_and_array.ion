@@ -1,0 +1,10 @@
+node:
+    int v
+
+void main()
+    node n = new node
+    n.v = 7
+    int[] arr = new int[2]
+    arr[0] = n.v
+    arr[1] = 3
+    print(arr[0] + arr[1])

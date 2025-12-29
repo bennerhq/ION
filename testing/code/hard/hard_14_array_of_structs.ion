@@ -1,0 +1,13 @@
+point:
+    int x
+    int y
+
+void main()
+    point[] pts = new point[2]
+    pts[0] = new point
+    pts[1] = new point
+    pts[0].x = 1
+    pts[0].y = 2
+    pts[1].x = 3
+    pts[1].y = 4
+    print(pts[0].x + pts[0].y + pts[1].x + pts[1].y)

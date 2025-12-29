@@ -1,0 +1,22 @@
+real calculate_average(real[] numbers)
+    real sum = 0.0
+    int count = numbers.length()
+    int i = 0
+
+    while i < count
+        sum = sum + numbers[i]
+        i = i + 1
+
+    return sum / count
+
+void main()
+    real[] my_data = new real[3]
+    my_data[0] = 10.5
+    my_data[1] = 20.0
+    my_data[2] = 5.5
+
+    real avg = calculate_average(my_data)
+    if avg > 10.0
+        print("high")
+    else
+        print("low")

@@ -1,0 +1,16 @@
+inner:
+    int v
+
+    int get()
+        return v
+
+middle:
+    inner c
+
+top:
+    middle b
+
+void main()
+    top t = new top
+    t.b.c.v = 9
+    print(t.b.c.get())

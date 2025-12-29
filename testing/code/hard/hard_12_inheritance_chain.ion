@@ -1,0 +1,17 @@
+base:
+    void move()
+        print("base")
+
+mid extends base:
+    void move()
+        print("mid")
+
+leaf extends mid:
+    void move()
+        print("leaf")
+
+void main()
+    leaf l = new leaf
+    l.move()
+    base b = l
+    b.move()

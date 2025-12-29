@@ -1,0 +1,9 @@
+void main()
+    int[][] grid = new int[][][2]
+    int[] row0 = new int[3]
+    int[] row1 = new int[3]
+    grid[0] = row0
+    grid[1] = row1
+    grid[0][0] = 1
+    grid[1][2] = 5
+    print(grid[0][0] + grid[1][2])

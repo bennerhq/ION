@@ -1,0 +1,7 @@
+import "../modules/mutual_odd" as odd
+
+bool is_even(int n)
+    if n == 0
+        return true
+    else
+        return odd.is_odd(n - 1)
