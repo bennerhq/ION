@@ -41,3 +41,14 @@ struct FunctionInfo {
     std::vector<std::shared_ptr<Type>> params;
     std::string wasm_name;
 };
+
+struct LocalInfo {
+    std::string wasm_name;
+    std::shared_ptr<Type> type;
+};
+
+struct Env {
+    std::unordered_map<std::string, LocalInfo> locals;
+    std::unordered_map<std::string, LocalInfo> params;
+    std::string current_struct;
+};

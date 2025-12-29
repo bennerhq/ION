@@ -8,6 +8,7 @@
 #include "struct_layout.h"
 
 #include "common.h"
+#include "type_layout.h"
 
 StructLayout::StructLayout(const Program &program, const TypeResolver &resolver,
                            std::unordered_map<std::string, StructInfo> &structs)
@@ -33,10 +34,10 @@ void StructLayout::ComputeLayouts() {
                 finfo.name = field.second;
                 finfo.type = resolver_.Resolve(field.first);
                 finfo.offset = offset;
-                offset += TypeSize(finfo.type);
+                offset += TypeLayout::SizeOf(finfo.type);
                 info.fields.push_back(finfo);
             }
-            info.size = Align8(offset);
+            info.size = TypeLayout::Align8(offset);
             if (info.size == 0) {
                 info.size = 8;
             }
@@ -52,23 +53,4 @@ void StructLayout::ComputeLayouts() {
             throw CompileError("Struct layout failed for " + entry.first);
         }
     }
-}
-
-int64_t StructLayout::Align8(int64_t value) {
-    return (value + 7) & ~static_cast<int64_t>(7);
-}
-
-int64_t StructLayout::TypeSize(const std::shared_ptr<Type> &type) {
-    switch (type->kind) {
-        case Type::Kind::Int:
-        case Type::Kind::Real:
-        case Type::Kind::Bool:
-        case Type::Kind::String:
-        case Type::Kind::Struct:
-        case Type::Kind::Array:
-            return 8;
-        case Type::Kind::Void:
-            return 0;
-    }
-    return 8;
 }

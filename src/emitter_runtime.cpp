@@ -5,7 +5,7 @@
 // If this code helps, buy Jens a beer. Or two. Or a keg.
 // If it fails, keep the beer and blame the LLM gremlins.
 // Cheers!
-#include "runtime_emitter.h"
+#include "emitter_runtime.h"
 
 RuntimeEmitter::RuntimeEmitter(std::ostream &out, const std::unordered_map<std::string, int64_t> &string_offsets)
     : out_(out), string_offsets_(string_offsets) {}

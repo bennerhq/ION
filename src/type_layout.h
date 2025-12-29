@@ -8,19 +8,11 @@
 #pragma once
 #include <cstdint>
 #include <memory>
-#include <unordered_map>
 
 #include "codegen_types.h"
-#include "type_resolver.h"
 
-class StructLayout {
+class TypeLayout {
 public:
-    StructLayout(const Program &program, const TypeResolver &resolver,
-                 std::unordered_map<std::string, StructInfo> &structs);
-    void ComputeLayouts();
-
-private:
-    const Program &program_;
-    const TypeResolver &resolver_;
-    std::unordered_map<std::string, StructInfo> &structs_;
+    static int64_t Align8(int64_t value);
+    static int64_t SizeOf(const std::shared_ptr<Type> &type);
 };

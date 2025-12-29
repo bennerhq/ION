@@ -60,7 +60,7 @@ std::string Lexer::StripComment(const std::string &line) {
     std::string out;
     for (size_t i = 0; i < line.size(); ++i) {
         char c = line[i];
-        if (c == '"') {
+        if (c == '"' && (i == 0 || line[i - 1] != '\\')) {
             in_string = !in_string;
             out.push_back(c);
             continue;
