@@ -25,10 +25,10 @@ bool TypeRules::IsAssignable(const std::shared_ptr<Type> &expected,
     if (expected->kind != actual->kind) {
         return false;
     }
-    if (expected->kind == Type::Kind::Array) {
+    if (expected->kind == TypeKind::Array) {
         return IsAssignable(expected->element, actual->element);
     }
-    if (expected->kind == Type::Kind::Struct) {
+    if (expected->kind == TypeKind::Struct) {
         if (expected->name == actual->name) {
             return true;
         }

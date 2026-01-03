@@ -13,14 +13,14 @@ int64_t TypeLayout::Align8(int64_t value) {
 
 int64_t TypeLayout::SizeOf(const std::shared_ptr<Type> &type) {
     switch (type->kind) {
-        case Type::Kind::Int:
-        case Type::Kind::Real:
-        case Type::Kind::Bool:
-        case Type::Kind::String:
-        case Type::Kind::Struct:
-        case Type::Kind::Array:
+        case TypeKind::Int:
+        case TypeKind::Real:
+        case TypeKind::Bool:
+        case TypeKind::String:
+        case TypeKind::Struct:
+        case TypeKind::Array:
             return 8;
-        case Type::Kind::Void:
+        case TypeKind::Void:
             return 0;
     }
     return 8;

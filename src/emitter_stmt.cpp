@@ -45,7 +45,7 @@ void StmtEmitter::EmitStmt(const StmtPtr &stmt, Env &env) {
         }
         case StmtKind::ExprStmt: {
             auto expr_type = emit_expr_(stmt->expr, env);
-            if (expr_type->kind != Type::Kind::Void) {
+            if (expr_type->kind != TypeKind::Void) {
                 out_ << "    drop\n";
             }
             break;

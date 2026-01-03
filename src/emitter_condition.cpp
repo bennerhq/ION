@@ -14,7 +14,7 @@ ConditionEmitter::ConditionEmitter(std::ostream &out, ExprEmitter emit_expr)
 
 void ConditionEmitter::EmitCondition(const ExprPtr &expr, Env &env) {
     auto type = emit_expr_(expr, env);
-    if (type->kind != Type::Kind::Bool) {
+    if (type->kind != TypeKind::Bool) {
         throw CompileError("Condition must be bool at line " + std::to_string(expr->line));
     }
     out_ << "    i32.wrap_i64\n";

@@ -63,15 +63,15 @@ void ModuleEmitter::EmitStart() {
     if (info->params.empty()) {
         out_ << "    call " << info->wasm_name << "\n";
     } else if (info->params.size() == 1 &&
-               info->params[0]->kind == Type::Kind::Array &&
+               info->params[0]->kind == TypeKind::Array &&
                info->params[0]->element &&
-               info->params[0]->element->kind == Type::Kind::String) {
+               info->params[0]->element->kind == TypeKind::String) {
         out_ << "    call $build_args\n";
         out_ << "    call " << info->wasm_name << "\n";
     } else {
         throw CompileError("main must be void main() or void main(string[] args)");
     }
-    if (info->return_type->kind != Type::Kind::Void) {
+    if (info->return_type->kind != TypeKind::Void) {
         out_ << "    drop\n";
     }
     out_ << "  )\n";

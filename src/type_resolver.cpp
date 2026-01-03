@@ -23,25 +23,25 @@ void TypeResolver::InitStructs() {
 
 std::shared_ptr<Type> TypeResolver::Resolve(const TypeSpec &spec) const {
     if (spec.is_void) {
-        return std::make_shared<Type>(Type{Type::Kind::Void, "void", nullptr});
+        return std::make_shared<Type>(Type{TypeKind::Void, "void", nullptr});
     }
     std::shared_ptr<Type> base;
     if (spec.name == "int") {
-        base = std::make_shared<Type>(Type{Type::Kind::Int, "int", nullptr});
+        base = std::make_shared<Type>(Type{TypeKind::Int, "int", nullptr});
     } else if (spec.name == "real") {
-        base = std::make_shared<Type>(Type{Type::Kind::Real, "real", nullptr});
+        base = std::make_shared<Type>(Type{TypeKind::Real, "real", nullptr});
     } else if (spec.name == "bool") {
-        base = std::make_shared<Type>(Type{Type::Kind::Bool, "bool", nullptr});
+        base = std::make_shared<Type>(Type{TypeKind::Bool, "bool", nullptr});
     } else if (spec.name == "string") {
-        base = std::make_shared<Type>(Type{Type::Kind::String, "string", nullptr});
+        base = std::make_shared<Type>(Type{TypeKind::String, "string", nullptr});
     } else {
         if (structs_.count(spec.name) == 0) {
             throw CompileError("Unknown type '" + spec.name + "'");
         }
-        base = std::make_shared<Type>(Type{Type::Kind::Struct, spec.name, nullptr});
+        base = std::make_shared<Type>(Type{TypeKind::Struct, spec.name, nullptr});
     }
     for (int i = 0; i < spec.array_depth; ++i) {
-        base = std::make_shared<Type>(Type{Type::Kind::Array, "", base});
+        base = std::make_shared<Type>(Type{TypeKind::Array, "", base});
     }
     return base;
 }

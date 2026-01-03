@@ -65,6 +65,7 @@ run_test() {
     else
       note="compile error"
     fi
+    cat "$compile_err"
     print_result_line "$idx" "$total" "${RED}FAIL${RESET}" "$rel" "$time_s" "$note"
     return 1
   fi

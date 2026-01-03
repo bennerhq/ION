@@ -85,12 +85,12 @@ void FormatEmitter::EmitFormattedPrint(const std::string &format, const std::vec
             ExprPtr arg = args[arg_index++];
             auto arg_type = emit_expr_(arg, env);
             if (next == 'i') {
-                if (arg_type->kind != Type::Kind::Int) {
+                if (arg_type->kind != TypeKind::Int) {
                     throw CompileError("Format %i expects int at line " + std::to_string(line));
                 }
                 out_ << "    call $print_i64_raw\n";
             } else if (next == 'r') {
-                if (arg_type->kind != Type::Kind::Real) {
+                if (arg_type->kind != TypeKind::Real) {
                     throw CompileError("Format %r expects real at line " + std::to_string(line));
                 }
                 if (has_precision) {
@@ -100,18 +100,18 @@ void FormatEmitter::EmitFormattedPrint(const std::string &format, const std::vec
                     out_ << "    call $print_f64_raw\n";
                 }
             } else if (next == 'e') {
-                if (arg_type->kind != Type::Kind::Real) {
+                if (arg_type->kind != TypeKind::Real) {
                     throw CompileError("Format %e expects real at line " + std::to_string(line));
                 }
                 out_ << "    i32.const " << precision << "\n";
                 out_ << "    call $print_f64_sci\n";
             } else if (next == 'b') {
-                if (arg_type->kind != Type::Kind::Bool) {
+                if (arg_type->kind != TypeKind::Bool) {
                     throw CompileError("Format %b expects bool at line " + std::to_string(line));
                 }
                 out_ << "    call $print_bool_raw\n";
             } else if (next == 's') {
-                if (arg_type->kind != Type::Kind::String) {
+                if (arg_type->kind != TypeKind::String) {
                     throw CompileError("Format %s expects string at line " + std::to_string(line));
                 }
                 out_ << "    call $print_string_raw\n";
@@ -130,7 +130,7 @@ void FormatEmitter::EmitFormattedPrint(const std::string &format, const std::vec
 
 void FormatEmitter::EmitRuntimeFormatCall(const std::vector<ExprPtr> &args, Env &env, int line) {
     auto fmt_type = infer_expr_(args[0], env);
-    if (fmt_type->kind != Type::Kind::String) {
+    if (fmt_type->kind != TypeKind::String) {
         throw CompileError("print format must be string at line " + std::to_string(line));
     }
     size_t count = args.size() - 1;
@@ -143,13 +143,13 @@ void FormatEmitter::EmitRuntimeFormatCall(const std::vector<ExprPtr> &args, Env 
         const auto &arg = args[i + 1];
         auto arg_type = infer_expr_(arg, env);
         int tag = 0;
-        if (arg_type->kind == Type::Kind::Int) {
+        if (arg_type->kind == TypeKind::Int) {
             tag = 1;
-        } else if (arg_type->kind == Type::Kind::Real) {
+        } else if (arg_type->kind == TypeKind::Real) {
             tag = 2;
-        } else if (arg_type->kind == Type::Kind::Bool) {
+        } else if (arg_type->kind == TypeKind::Bool) {
             tag = 3;
-        } else if (arg_type->kind == Type::Kind::String) {
+        } else if (arg_type->kind == TypeKind::String) {
             tag = 4;
         } else {
             throw CompileError("Unsupported format argument type at line " + std::to_string(line));
@@ -161,7 +161,7 @@ void FormatEmitter::EmitRuntimeFormatCall(const std::vector<ExprPtr> &args, Env 
         out_ << "    i32.wrap_i64\n";
         out_ << "    i32.const " << tag << "\n";
         out_ << "    i32.store\n";
-        if (arg_type->kind == Type::Kind::Real) {
+        if (arg_type->kind == TypeKind::Real) {
             emit_expr_(arg, env);
             out_ << "    local.set $tmpf\n";
             out_ << "    local.get $tmp1\n";

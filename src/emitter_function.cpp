@@ -41,7 +41,7 @@ void FunctionEmitter::EmitFunction(const Function &fn, const std::string &owner,
             env.params["this"] = local;
         }
     }
-    if (info.return_type->kind != Type::Kind::Void) {
+    if (info.return_type->kind != TypeKind::Void) {
         out_ << " (result " << wasm_type_(info.return_type) << ")";
     }
     std::vector<LocalInfo> locals;
@@ -56,7 +56,7 @@ void FunctionEmitter::EmitFunction(const Function &fn, const std::string &owner,
     for (const auto &stmt : fn.body) {
         emit_stmt_(stmt, env);
     }
-    if (info.return_type->kind == Type::Kind::Void) {
+    if (info.return_type->kind == TypeKind::Void) {
         out_ << "    (nop)\n";
     } else {
         emit_zero_(info.return_type);

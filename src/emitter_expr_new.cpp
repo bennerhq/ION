@@ -23,11 +23,11 @@ ExprNewEmitter::ExprNewEmitter(std::ostream &out,
 std::shared_ptr<Type> ExprNewEmitter::EmitNew(const ExprPtr &expr, Env &env) {
     auto type = resolve_type_(expr->new_type);
     if (expr->new_size) {
-        if (type->kind != Type::Kind::Array) {
-            type = std::make_shared<Type>(Type{Type::Kind::Array, "", type});
+        if (type->kind != TypeKind::Array) {
+            type = std::make_shared<Type>(Type{TypeKind::Array, "", type});
         }
         auto size_type = emit_expr_(expr->new_size, env);
-        if (size_type->kind != Type::Kind::Int) {
+        if (size_type->kind != TypeKind::Int) {
             throw CompileError("Array size must be int at line " + std::to_string(expr->line));
         }
         int64_t elem_size = type_size_(type->element);
@@ -46,7 +46,7 @@ std::shared_ptr<Type> ExprNewEmitter::EmitNew(const ExprPtr &expr, Env &env) {
         out_ << "    local.get $tmp1\n";
         return type;
     }
-    if (type->kind != Type::Kind::Struct) {
+    if (type->kind != TypeKind::Struct) {
         throw CompileError("new without size requires struct type at line " + std::to_string(expr->line));
     }
     const StructInfo *info = lookup_struct_(type->name);

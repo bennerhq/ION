@@ -14,41 +14,35 @@
 
 #include "ast.h"
 
-struct Type {
-    enum class Kind { Int, Real, Bool, String, Void, Struct, Array } kind;
-    std::string name;
-    std::shared_ptr<Type> element;
-};
-
 struct FieldInfo {
-    std::string name;
-    std::shared_ptr<Type> type;
-    int64_t offset = 0;
+  std::string name;
+  std::shared_ptr<Type> type;
+  int64_t offset = 0;
 };
 
 struct StructInfo {
-    std::string name;
-    std::string parent;
-    std::vector<FieldInfo> fields;
-    std::unordered_map<std::string, FieldInfo> field_map;
-    std::unordered_map<std::string, Function *> methods;
-    int64_t size = 0;
+  std::string name;
+  std::string parent;
+  std::vector<FieldInfo> fields;
+  std::unordered_map<std::string, FieldInfo> field_map;
+  std::unordered_map<std::string, Function *> methods;
+  int64_t size = 0;
 };
 
 struct FunctionInfo {
-    Function *decl = nullptr;
-    std::shared_ptr<Type> return_type;
-    std::vector<std::shared_ptr<Type>> params;
-    std::string wasm_name;
+  Function *decl = nullptr;
+  std::shared_ptr<Type> return_type;
+  std::vector<std::shared_ptr<Type>> params;
+  std::string wasm_name;
 };
 
 struct LocalInfo {
-    std::string wasm_name;
-    std::shared_ptr<Type> type;
+  std::string wasm_name;
+  std::shared_ptr<Type> type;
 };
 
 struct Env {
-    std::unordered_map<std::string, LocalInfo> locals;
-    std::unordered_map<std::string, LocalInfo> params;
-    std::string current_struct;
+  std::unordered_map<std::string, LocalInfo> locals;
+  std::unordered_map<std::string, LocalInfo> params;
+  std::string current_struct;
 };

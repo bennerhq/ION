@@ -55,7 +55,7 @@ void AssignmentEmitter::EmitAssignment(const ExprPtr &target, const ExprPtr &val
 std::shared_ptr<Type> AssignmentEmitter::EmitAddress(const ExprPtr &expr, Env &env) {
     if (expr->kind == ExprKind::Field) {
         auto base_type = emit_expr_(expr->base, env);
-        if (base_type->kind != Type::Kind::Struct) {
+        if (base_type->kind != TypeKind::Struct) {
             throw CompileError("Field access on non-struct at line " + std::to_string(expr->line));
         }
         const StructInfo *info = lookup_struct_(base_type->name);
@@ -77,7 +77,7 @@ std::shared_ptr<Type> AssignmentEmitter::EmitAddress(const ExprPtr &expr, Env &e
 }
 
 void AssignmentEmitter::EmitStore(const std::shared_ptr<Type> &type) {
-    if (type->kind == Type::Kind::Real) {
+    if (type->kind == TypeKind::Real) {
         out_ << "    local.set $tmpf\n";
         out_ << "    local.get $tmp2\n";
         out_ << "    i32.wrap_i64\n";

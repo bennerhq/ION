@@ -32,7 +32,7 @@ ExprAccessEmitter::ExprAccessEmitter(std::ostream &out,
 
 std::shared_ptr<Type> ExprAccessEmitter::EmitField(const ExprPtr &expr, Env &env) {
     auto base_type = emit_expr_(expr->base, env);
-    if (base_type->kind != Type::Kind::Struct) {
+    if (base_type->kind != TypeKind::Struct) {
         throw CompileError("Field access on non-struct at line " + std::to_string(expr->line));
     }
     const StructInfo *info = lookup_struct_(base_type->name);
@@ -78,19 +78,19 @@ std::shared_ptr<Type> ExprAccessEmitter::EmitCall(const ExprPtr &expr, Env &env)
                 throw CompileError("print expects 1 argument or a format string at line " + std::to_string(expr->line));
             }
             auto arg_type = emit_expr_(expr->args[0], env);
-            if (arg_type->kind == Type::Kind::Int) {
+            if (arg_type->kind == TypeKind::Int) {
                 out_ << "    call $print_i64\n";
                 return resolve_type_(TypeSpec{"void", 0, true});
             }
-            if (arg_type->kind == Type::Kind::Bool) {
+            if (arg_type->kind == TypeKind::Bool) {
                 out_ << "    call $print_bool\n";
                 return resolve_type_(TypeSpec{"void", 0, true});
             }
-            if (arg_type->kind == Type::Kind::String) {
+            if (arg_type->kind == TypeKind::String) {
                 out_ << "    call $print_string\n";
                 return resolve_type_(TypeSpec{"void", 0, true});
             }
-            if (arg_type->kind == Type::Kind::Real) {
+            if (arg_type->kind == TypeKind::Real) {
                 out_ << "    call $print_f64\n";
                 return resolve_type_(TypeSpec{"void", 0, true});
             }
@@ -101,7 +101,7 @@ std::shared_ptr<Type> ExprAccessEmitter::EmitCall(const ExprPtr &expr, Env &env)
                 throw CompileError("sqrt expects 1 argument at line " + std::to_string(expr->line));
             }
             auto arg_type = emit_expr_(expr->args[0], env);
-            if (arg_type->kind != Type::Kind::Real) {
+            if (arg_type->kind != TypeKind::Real) {
                 throw CompileError("sqrt expects real at line " + std::to_string(expr->line));
             }
             out_ << "    f64.sqrt\n";
@@ -124,7 +124,7 @@ std::shared_ptr<Type> ExprAccessEmitter::EmitCall(const ExprPtr &expr, Env &env)
     if (expr->base->kind == ExprKind::Field) {
         auto field = expr->base;
         auto base_type = emit_expr_(field->base, env);
-        if (base_type->kind == Type::Kind::Array && field->field == "length") {
+        if (base_type->kind == TypeKind::Array && field->field == "length") {
             if (!expr->args.empty()) {
                 throw CompileError("length() takes no args at line " + std::to_string(expr->line));
             }
@@ -132,7 +132,7 @@ std::shared_ptr<Type> ExprAccessEmitter::EmitCall(const ExprPtr &expr, Env &env)
             out_ << "    i64.load\n";
             return resolve_type_(TypeSpec{"int", 0, false});
         }
-        if (base_type->kind == Type::Kind::String && field->field == "length") {
+        if (base_type->kind == TypeKind::String && field->field == "length") {
             if (!expr->args.empty()) {
                 throw CompileError("length() takes no args at line " + std::to_string(expr->line));
             }
@@ -140,7 +140,7 @@ std::shared_ptr<Type> ExprAccessEmitter::EmitCall(const ExprPtr &expr, Env &env)
             out_ << "    i64.load\n";
             return resolve_type_(TypeSpec{"int", 0, false});
         }
-        if (base_type->kind != Type::Kind::Struct) {
+        if (base_type->kind != TypeKind::Struct) {
             throw CompileError("Method call on non-struct at line " + std::to_string(expr->line));
         }
         std::string method_name = base_type->name + "." + field->field;
@@ -163,12 +163,12 @@ std::shared_ptr<Type> ExprAccessEmitter::EmitCall(const ExprPtr &expr, Env &env)
 
 std::shared_ptr<Type> ExprAccessEmitter::EmitIndexAddress(const ExprPtr &expr, Env &env) {
     auto base_type = emit_expr_(expr->base, env);
-    if (base_type->kind != Type::Kind::Array) {
+    if (base_type->kind != TypeKind::Array) {
         throw CompileError("Indexing non-array at line " + std::to_string(expr->line));
     }
     out_ << "    local.set $tmp0\n";
     auto index_type = emit_expr_(expr->left, env);
-    if (index_type->kind != Type::Kind::Int) {
+    if (index_type->kind != TypeKind::Int) {
         throw CompileError("Array index must be int at line " + std::to_string(expr->line));
     }
     out_ << "    local.set $tmp1\n";

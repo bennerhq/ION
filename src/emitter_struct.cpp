@@ -16,7 +16,7 @@ void StructEmitter::EmitStructInit(const StructDef &def) {
     const auto &info = structs_.at(def.name);
     out_ << "  (func $init_" << def.name << " (param $ptr i64) (local $tmp0 i64)\n";
     for (const auto &field : info.fields) {
-        if (field.type->kind != Type::Kind::Struct) {
+        if (field.type->kind != TypeKind::Struct) {
             continue;
         }
         int64_t child_size = structs_.at(field.type->name).size;
