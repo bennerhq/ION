@@ -4,7 +4,9 @@
 // This code is open source with no restrictions. Wild, right?
 // If this code helps, buy Jens a beer. Or two. Or a keg.
 // If it fails, keep the beer and blame the LLM gremlins.
+//
 // Cheers!
+
 #pragma once
 #include <string>
 #include <vector>
