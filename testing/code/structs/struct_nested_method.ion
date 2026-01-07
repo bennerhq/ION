@@ -1,0 +1,16 @@
+meter:
+    int v
+
+    int inc(int by)
+        return v + by
+
+holder:
+    meter m
+
+    int bump()
+        return m.inc(3)
+
+void main()
+    holder h = new holder
+    h.m.v = 4
+    print(h.bump())

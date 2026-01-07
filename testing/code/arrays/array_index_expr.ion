@@ -1,0 +1,10 @@
+int idx(int a, int b)
+    return a * b - 1
+
+void main()
+    int[] arr = new int[6]
+    int i = 0
+    while i < arr.length()
+        arr[i] = i * i
+        i = i + 1
+    print(arr[idx(2, 3)])

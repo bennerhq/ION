@@ -1,0 +1,4 @@
+import "../modules/chain"
+
+void main()
+    print(chain.add2(5))

@@ -1,0 +1,15 @@
+counter:
+    int v
+
+    void inc()
+        v = v + 1
+
+    void add(int n)
+        v = v + n
+
+void main()
+    counter c = new counter
+    c.v = 1
+    c.inc()
+    c.add(4)
+    print(c.v)

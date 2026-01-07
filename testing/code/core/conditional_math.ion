@@ -1,0 +1,11 @@
+int adjust(int x)
+    if x % 2 == 0
+        return x / 2
+    else
+        return x * 3 + 1
+
+void main()
+    int v = 7
+    v = adjust(v)
+    v = adjust(v)
+    print(v)

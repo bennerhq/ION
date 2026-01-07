@@ -1,0 +1,5 @@
+import "../modules/math" as m
+
+void main()
+    int v = m.add(m.square(3), m.mul(2, 4))
+    print(v)

@@ -1,0 +1,14 @@
+void main()
+    int[][] grid = new int[][][3]
+    int i = 0
+    while i < 3
+        grid[i] = new int[3]
+        i = i + 1
+
+    i = 0
+    while i < 3
+        grid[i][i] = i + 1
+        i = i + 1
+
+    int sum = grid[0][0] + grid[1][1] + grid[2][2]
+    print(sum)

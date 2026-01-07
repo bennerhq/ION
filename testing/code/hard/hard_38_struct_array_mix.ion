@@ -1,0 +1,23 @@
+node:
+    int v
+
+    int twice()
+        return v * 2
+
+void main()
+    node[] nodes = new node[4]
+    int i = 0
+    while i < nodes.length()
+        nodes[i] = new node
+        nodes[i].v = i + 1
+        i = i + 1
+
+    int sum = 0
+    i = 0
+    while i < nodes.length()
+        if nodes[i].v % 2 == 0
+            sum = sum + nodes[i].twice()
+        else
+            sum = sum + nodes[i].v
+        i = i + 1
+    print(sum)

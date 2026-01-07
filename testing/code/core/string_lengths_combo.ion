@@ -1,0 +1,4 @@
+void main()
+    string a = "hi"
+    string b = "ion"
+    print("%i\n", a.length() + b.length())

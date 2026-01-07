@@ -44,18 +44,15 @@ EmitRuntime(std::ostream &out,
   out << "    call $fd_write\n";
   out << "    drop\n";
   out << "  )\n";
-  out << "  (func $write_byte (param $val i32)\n"
-         "    i32.const "
-      << kBufPtr
-      << "\n"
-         "    local.get $val\n"
-         "    i32.store8\n"
-         "    i32.const "
-      << kBufPtr
-      << "\n"
-         "    i32.const 1\n"
-         "    call $write_bytes\n"
-         "  )\n";
+
+  out << "  (func $write_byte (param $val i32)\n";
+  out << "    i32.const "<< kBufPtr << "\n";
+  out << "    local.get $val\n";
+  out << "    i32.store8\n";
+  out << "    i32.const " << kBufPtr << "\n";
+  out << "    i32.const 1\n";
+  out << "    call $write_bytes\n";
+  out << "  )\n";
 
   out << "  (func $print_string_raw (param $ptr i64)\n";
   out << "    (local $len i64)\n";
@@ -104,8 +101,7 @@ EmitRuntime(std::ostream &out,
   out << "  )\n";
 
   out << "  (func $print_i64_raw (param $val i64)\n";
-  out << "    (local $tmp i64) (local $pos i32) (local $neg i32) (local $digit "
-         "i64)\n";
+  out << "    (local $tmp i64) (local $pos i32) (local $neg i32) (local $digit i64)\n";
   out << "    i32.const " << (kBufPtr + 63) << "\n";
   out << "    local.set $pos\n";
   out << "    local.get $val\n";
@@ -125,13 +121,10 @@ EmitRuntime(std::ostream &out,
   out << "    else\n";
   out << "      block\n loop\n";
   out << "          local.get $tmp\n i64.const 0\n i64.eq\n br_if 1\n";
-  out << "          local.get $tmp\n i64.const 10\n i64.rem_u\n local.set "
-         "$digit\n";
-  out << "          local.get $pos\n local.get $digit\n i64.const 48\n "
-         "i64.add\n i32.wrap_i64\n i32.store8\n";
+  out << "          local.get $tmp\n i64.const 10\n i64.rem_u\n local.set $digit\n";
+  out << "          local.get $pos\n local.get $digit\n i64.const 48\n i64.add\n i32.wrap_i64\n i32.store8\n";
   out << "          local.get $pos\n i32.const 1\n i32.sub\n local.set $pos\n";
-  out << "          local.get $tmp\n i64.const 10\n i64.div_u\n local.set "
-         "$tmp\n";
+  out << "          local.get $tmp\n i64.const 10\n i64.div_u\n local.set $tmp\n";
   out << "          br 0\n";
   out << "      end\n end\n";
   out << "    end\n";
@@ -141,9 +134,8 @@ EmitRuntime(std::ostream &out,
   out << "      local.get $pos\n i32.const 1\n i32.sub\n local.set $pos\n";
   out << "    end\n";
   out << "    local.get $pos\n i32.const 1\n i32.add\n local.set $pos\n";
-  out << "    i32.const " << (kBufPtr + 63)
-      << "\n local.get $pos\n i32.sub\n i32.const 1\n i32.add\n local.set "
-         "$neg\n";
+  out << "    i32.const " << (kBufPtr + 63) << "\n";
+  out << "    local.get $pos\n i32.sub\n i32.const 1\n i32.add\n local.set $neg\n";
   out << "    local.get $pos\n local.get $neg\n call $write_bytes\n";
   out << "  )\n";
 
@@ -233,8 +225,7 @@ EmitRuntime(std::ostream &out,
   out << "  )\n";
 
   out << "  (func $print_f64_prec (param $val f64) (param $prec i32)\n";
-  out << "    (local $scale i64) (local $scaled i64) (local $int i64) (local "
-         "$frac i64)\n";
+  out << "    (local $scale i64) (local $scaled i64) (local $int i64) (local $frac i64)\n";
   out << "    local.get $val\n";
   out << "    f64.const 0\n";
   out << "    f64.lt\n";
@@ -385,12 +376,9 @@ EmitRuntime(std::ostream &out,
   out << "    call $print_fixed\n";
   out << "  )\n";
 
-  out << "  (func $print_format (param $fmt i64) (param $args i64) (param "
-         "$count i32)\n";
-  out << "    (local $len i32) (local $pos i32) (local $i i32) (local $arg_ptr "
-         "i64)\n";
-  out << "    (local $ch i32) (local $spec i32) (local $prec i32) (local $tmp "
-         "i32)\n";
+  out << "  (func $print_format (param $fmt i64) (param $args i64) (param $count i32)\n";
+  out << "    (local $len i32) (local $pos i32) (local $i i32) (local $arg_ptr i64)\n";
+  out << "    (local $ch i32) (local $spec i32) (local $prec i32) (local $tmp i32)\n";
   out << "    local.get $fmt\n";
   out << "    i32.wrap_i64\n";
   out << "    i64.load\n";
@@ -587,12 +575,9 @@ EmitRuntime(std::ostream &out,
   out << "  )\n";
 
   out << "  (func $build_args (result i64)\n";
-  out << "    (local $sizes i32) (local $argc i32) (local $buf_size i32) "
-         "(local $start i32)\n";
-  out << "    (local $argv i32) (local $buf i32) (local $i i32) (local $ptr "
-         "i32)\n";
-  out << "    (local $len i32) (local $offset i32) (local $arr i64) (local "
-         "$str i64)\n";
+  out << "    (local $sizes i32) (local $argc i32) (local $buf_size i32) (local $start i32)\n";
+  out << "    (local $argv i32) (local $buf i32) (local $i i32) (local $ptr i32)\n";
+  out << "    (local $len i32) (local $offset i32) (local $arr i64) (local $str i64)\n";
   out << "    i64.const 8\n";
   out << "    call $alloc\n";
   out << "    i32.wrap_i64\n";

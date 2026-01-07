@@ -1,0 +1,14 @@
+void main()
+    real[] arr = new real[4]
+    arr[0] = 1.0
+    arr[1] = 2.0
+    arr[2] = 3.0
+    arr[3] = 4.0
+
+    real sum = 0.0
+    int i = 0
+    while i < arr.length()
+        sum = sum + arr[i]
+        i = i + 1
+    real avg = sum / arr.length()
+    print("%r{2}\n", avg)

@@ -1,0 +1,15 @@
+vec2:
+    int x
+    int y
+
+    int dot(vec2 other)
+        return x * other.x + y * other.y
+
+void main()
+    vec2 a = new vec2
+    vec2 b = new vec2
+    a.x = 1
+    a.y = 2
+    b.x = 3
+    b.y = 4
+    print(a.dot(b))

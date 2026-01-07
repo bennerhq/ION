@@ -1,0 +1,10 @@
+bool is_pal(int n)
+    int orig = n
+    int rev = 0
+    while n > 0
+        rev = rev * 10 + (n % 10)
+        n = n / 10
+    return rev == orig
+
+void main()
+    print("%b\n", is_pal(12321))

@@ -1,0 +1,14 @@
+void main()
+    int[] arr = new int[4]
+    arr[0] = 10
+    arr[1] = 20
+    arr[2] = 30
+    arr[3] = 40
+
+    int first = arr[0]
+    int i = 0
+    while i < 3
+        arr[i] = arr[i + 1]
+        i = i + 1
+    arr[3] = first
+    print("%i %i\n", arr[0], arr[3])

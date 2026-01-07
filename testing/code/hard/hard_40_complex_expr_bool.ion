@@ -1,0 +1,9 @@
+void main()
+    int a = 5
+    int b = 12
+    int c = 7
+    bool ok = (a * 2 + b / 3 == 14) and (c % 2 == 1) or false
+    if ok
+        print("ok")
+    else
+        print("bad")

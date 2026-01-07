@@ -1,0 +1,4 @@
+import "../modules/math"
+
+void main()
+    print(math.square(6))

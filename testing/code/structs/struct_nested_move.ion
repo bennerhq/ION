@@ -1,0 +1,19 @@
+point:
+    int x
+    int y
+
+    void shift(int dx, int dy)
+        x = x + dx
+        y = y + dy
+
+box:
+    point p
+    int w
+
+void main()
+    box b = new box
+    b.p.x = 1
+    b.p.y = 2
+    b.w = 3
+    b.p.shift(2, 3)
+    print(b.p.x + b.p.y + b.w)

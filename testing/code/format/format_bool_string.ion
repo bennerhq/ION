@@ -1,0 +1,2 @@
+void main()
+    print("ok=%b %s\n", true, "ion")

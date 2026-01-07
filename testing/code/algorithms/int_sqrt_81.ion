@@ -1,0 +1,8 @@
+int int_sqrt(int n)
+    int x = 0
+    while (x + 1) * (x + 1) <= n
+        x = x + 1
+    return x
+
+void main()
+    print(int_sqrt(81))

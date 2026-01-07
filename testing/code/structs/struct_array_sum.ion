@@ -1,0 +1,14 @@
+pair:
+    int a
+    int b
+
+void main()
+    pair[] ps = new pair[2]
+    ps[0] = new pair
+    ps[1] = new pair
+    ps[0].a = 1
+    ps[0].b = 2
+    ps[1].a = 3
+    ps[1].b = 4
+    int sum = ps[0].a + ps[0].b + ps[1].a + ps[1].b
+    print(sum)

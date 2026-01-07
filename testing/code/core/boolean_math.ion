@@ -1,0 +1,6 @@
+void main()
+    int a = 5
+    int b = 8
+    bool c = (a < b) and (b - a == 3)
+    bool d = (a * 2 >= b) or false
+    print("%b %b\n", c, d)

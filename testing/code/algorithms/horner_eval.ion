@@ -1,0 +1,9 @@
+int poly(int x)
+    int r = 2
+    r = r * x - 1
+    r = r * x + 3
+    r = r * x - 5
+    return r
+
+void main()
+    print(poly(4))

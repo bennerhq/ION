@@ -1,0 +1,22 @@
+void main()
+    int[] arr = new int[5]
+    int i = 0
+    while i < 5
+        arr[i] = i + 1
+        i = i + 1
+
+    int l = 0
+    int r = 4
+    while l < r
+        int t = arr[l]
+        arr[l] = arr[r]
+        arr[r] = t
+        l = l + 1
+        r = r - 1
+
+    int sum = 0
+    i = 0
+    while i < 5
+        sum = sum + arr[i]
+        i = i + 1
+    print(sum)

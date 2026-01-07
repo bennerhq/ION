@@ -1,0 +1,12 @@
+rpoint:
+    real x
+    real y
+
+    real len()
+        return sqrt(x * x + y * y)
+
+void main()
+    rpoint p = new rpoint
+    p.x = 3.0
+    p.y = 4.0
+    print(p.len())

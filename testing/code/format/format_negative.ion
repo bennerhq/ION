@@ -1,0 +1,2 @@
+void main()
+    print("%i %r{2}\n", -7, -3.5)

@@ -1,0 +1,15 @@
+int sum_range(int[] arr, int lo, int hi)
+    if lo >= hi
+        return 0
+    if hi - lo == 1
+        return arr[lo]
+    int mid = (lo + hi) / 2
+    return sum_range(arr, lo, mid) + sum_range(arr, mid, hi)
+
+void main()
+    int[] arr = new int[8]
+    int i = 0
+    while i < 8
+        arr[i] = i + 1
+        i = i + 1
+    print(sum_range(arr, 0, arr.length()))

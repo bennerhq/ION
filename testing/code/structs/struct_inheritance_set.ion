@@ -1,0 +1,17 @@
+base:
+    int v
+
+    void set(int n)
+        v = n
+
+child extends base:
+    int w
+
+    void set2(int n)
+        w = n + v
+
+void main()
+    child c = new child
+    c.set(4)
+    c.set2(3)
+    print(c.w)

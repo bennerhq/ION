@@ -1,0 +1,2 @@
+void main()
+    print("a=%i b=%i c=%i\n", 1, 2, 3)

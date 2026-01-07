@@ -1,0 +1,10 @@
+void main()
+    int x = 7
+    int y = 3
+    if x < y
+        print("lt")
+    else
+        if x == 7 and y == 3
+            print("match")
+        else
+            print("no")

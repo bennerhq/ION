@@ -1,0 +1,15 @@
+pair:
+    int a
+    int b
+
+    void swap()
+        int t = a
+        a = b
+        b = t
+
+void main()
+    pair p = new pair
+    p.a = 2
+    p.b = 5
+    p.swap()
+    print(p.a + p.b)
