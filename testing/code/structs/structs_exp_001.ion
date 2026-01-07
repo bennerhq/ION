@@ -1,0 +1,27 @@
+pair:
+    int a
+    int b
+
+    int sum()
+        return a + b
+
+    int diff()
+        return a - b
+
+stats:
+    pair p
+    int scale
+
+    int score()
+        int s = p.sum() * scale
+        if s < 0
+            s = 0 - s
+        return s + p.diff()
+
+void main()
+    stats st = new stats
+    st.p.a = 4
+    st.p.b = 2
+    st.scale = 3
+    int r = st.score()
+    print("%i\n", r)

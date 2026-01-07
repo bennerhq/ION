@@ -1,0 +1,30 @@
+int triangle(int n)
+    int sum = 0
+    int i = 1
+    while i <= n
+        sum = sum + i
+        i = i + 1
+    return sum
+
+int zigzag(int a, int b)
+    int s = 0
+    int i = a
+    while i <= b
+        if i % 2 == 0
+            s = s + i
+        else
+            s = s - i
+        i = i + 1
+    return s
+
+int mix(int n, int a, int b)
+    int t = triangle(n)
+    int z = zigzag(a, b)
+    if z < 0
+        z = 0 - z
+    return t + z
+
+void main()
+    int t = triangle(4)
+    int m = mix(4, 3, 9)
+    print("%i %i\n", t, m)

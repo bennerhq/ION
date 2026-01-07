@@ -1,0 +1,22 @@
+int fib(int n)
+    int[] dp = new int[n + 1]
+    dp[0] = 0
+    dp[1] = 1
+    int i = 2
+    while i <= n
+        dp[i] = dp[i - 1] + dp[i - 2]
+        i = i + 1
+    return dp[n]
+
+int checksum(int n)
+    int s = 0
+    int i = 0
+    while i <= n
+        s = s + ((i * i) % 7)
+        i = i + 1
+    return s
+
+void main()
+    int f = fib(6)
+    int c = checksum(6)
+    print("%i %i\n", f, c)

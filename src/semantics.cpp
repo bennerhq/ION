@@ -129,4 +129,27 @@ void BuildFunctionCatalog(
       structs[def.name].methods[method.name] = info.decl;
     }
   }
+
+  // Populate inherited methods so derived.method resolves to the base impl.
+  for (const auto &def : program.structs) {
+    const std::string &child = def.name;
+    std::string current = structs[child].parent;
+    while (!current.empty()) {
+      const auto &parent_methods = structs[current].methods;
+      for (const auto &entry : parent_methods) {
+        const std::string &method_name = entry.first;
+        std::string child_key = child + "." + method_name;
+        if (functions.count(child_key)) {
+          continue; // Child overrides or already mapped.
+        }
+        std::string parent_key = current + "." + method_name;
+        auto it = functions.find(parent_key);
+        if (it == functions.end()) {
+          continue;
+        }
+        functions[child_key] = it->second;
+      }
+      current = structs[current].parent;
+    }
+  }
 }

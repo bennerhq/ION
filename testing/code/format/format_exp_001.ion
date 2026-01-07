@@ -1,0 +1,6 @@
+void main()
+    int a = 11
+    real r = 2.5
+    bool b = false
+    string s = "tag1"
+    print("a=%i r=%r{2} b=%b s=%s %%\n", a, r, b, s)
